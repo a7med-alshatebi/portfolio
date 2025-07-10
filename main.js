@@ -40,95 +40,135 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Contact form handler for Google Sheets
+  document.addEventListener('DOMContentLoaded', function() {
   const contactForm = document.getElementById('contactForm');
-  if (contactForm) {
-    contactForm.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      
-      // Replace this URL with your Google Apps Script web app URL
-      const GOOGLE_SCRIPT_URL = CONFIG.GOOGLE_SCRIPT_URL;
-      
-      const submitBtn = document.getElementById('submitBtn');
-      const submitText = document.getElementById('submitText');
-      const loadingText = document.getElementById('loadingText');
-      const formMessage = document.getElementById('formMessage');
-      
-      // Show loading state
-      submitBtn.disabled = true;
-      submitText.classList.add('hidden');
-      loadingText.classList.remove('hidden');
-      
-      // Get form data
-      const formData = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        subject: document.getElementById('subject').value,
-        message: document.getElementById('message').value
-      };
-      
-      try {
-        console.log('Sending data to:', GOOGLE_SCRIPT_URL);
-        console.log('Form data:', formData);
-        
-        const response = await fetch(GOOGLE_SCRIPT_URL, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formData)
-          // Removed 'mode: no-cors' to properly handle the response
-        });
-        
-        console.log('Response status:', response.status);
-        console.log('Response ok:', response.ok);
-        
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        const result = await response.json();
-        console.log('Response data:', result);
-        
-        if (result.success) {
-          showMessage('Thank you! Your message has been sent successfully.', 'success');
-          contactForm.reset();
-        } else {
-          throw new Error(result.error || 'Unknown error occurred');
-        }
-        
-      } catch (error) {
-        console.error('Error sending form:', error);
-        
-        // Provide more specific error messages
-        let errorMessage = 'Sorry, there was an error sending your message. ';
-        
-        if (error.message.includes('Failed to fetch') || error.message.includes('CORS')) {
-          errorMessage += 'Please make sure your Google Apps Script is deployed correctly with "Anyone" access permissions.';
-        } else if (error.message.includes('HTTP error')) {
-          errorMessage += 'Server responded with an error. Please check your Google Apps Script configuration.';
-        } else {
-          errorMessage += 'Please try again or contact me directly at ' + (CONFIG.CONTACT_EMAIL || 'your-email@example.com');
-        }
-        
-        showMessage(errorMessage, 'error');
-      }
-      
-      // Reset button state
-      submitBtn.disabled = false;
-      submitText.classList.remove('hidden');
-      loadingText.classList.add('hidden');
-    });
-  }
+  
+  if (!contactForm) return;
 
-  function showMessage(message, type) {
-    const formMessage = document.getElementById('formMessage');
-    formMessage.textContent = message;
-    formMessage.className = `p-4 rounded-lg ${type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`;
-    formMessage.classList.remove('hidden');
-    
-    // Hide message after 5 seconds
-    setTimeout(() => {
-      formMessage.classList.add('hidden');
-    }, 5000);
+  contactForm.addEventListener('submit', handleFormSubmit);
+});
+
+async function handleFormSubmit(e) {
+  e.preventDefault();
+  
+  const form = e.target;
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const submitText = document.getElementById('submitText');
+  const loadingText = document.getElementById('loadingText');
+  const formMessage = document.getElementById('formMessage');
+  
+  // Show loading state
+  toggleLoadingState(true, submitBtn, submitText, loadingText);
+  
+  // Get and validate form data
+  const formData = getFormData(form);
+  const validationError = validateForm(formData);
+  
+  if (validationError) {
+    showMessage(formMessage, validationError, 'error');
+    toggleLoadingState(false, submitBtn, submitText, loadingText);
+    return;
   }
+  
+  try {
+    const response = await submitForm(formData);
+    
+    if (response.success) {
+      showMessage(formMessage, CONFIG.MESSAGES.SUCCESS, 'success');
+      form.reset();
+    } else {
+      throw new Error(response.error || CONFIG.MESSAGES.ERROR);
+    }
+  } catch (error) {
+    handleSubmissionError(error, formMessage);
+  } finally {
+    toggleLoadingState(false, submitBtn, submitText, loadingText);
+  }
+}
+
+function getFormData(form) {
+  return {
+    name: form.querySelector('#name').value.trim(),
+    email: form.querySelector('#email').value.trim(),
+    subject: form.querySelector('#subject').value.trim(),
+    message: form.querySelector('#message').value.trim()
+  };
+}
+
+function validateForm(data) {
+  if (!data.name || !data.email || !data.message) {
+    return CONFIG.MESSAGES.VALIDATION_ERROR;
+  }
+  
+  if (!isValidEmail(data.email)) {
+    return 'Please enter a valid email address.';
+  }
+  
+  return null;
+}
+
+function isValidEmail(email) {
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return re.test(email);
+}
+
+async function submitForm(data) {
+  try {
+    const response = await fetch(CONFIG.GOOGLE_SCRIPT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
+    return await response.json();
+  } catch (error) {
+    console.error('Submission error:', error);
+    throw error;
+  }
+}
+
+function handleSubmissionError(error, formMessage) {
+  console.error('Form submission failed:', error);
+  
+  let errorMessage = CONFIG.MESSAGES.ERROR;
+  
+  if (error.message.includes('Failed to fetch')) {
+    errorMessage = CONFIG.MESSAGES.NETWORK_ERROR;
+  } else if (error.message.includes('HTTP error')) {
+    errorMessage += ' (Server error)';
+  }
+  
+  errorMessage += CONFIG.CONTACT_EMAIL ? ` at ${CONFIG.CONTACT_EMAIL}` : '';
+  showMessage(formMessage, errorMessage, 'error');
+}
+
+function toggleLoadingState(isLoading, submitBtn, submitText, loadingText) {
+  submitBtn.disabled = isLoading;
+  
+  if (isLoading) {
+    submitText.classList.add('hidden');
+    loadingText.classList.remove('hidden');
+  } else {
+    submitText.classList.remove('hidden');
+    loadingText.classList.add('hidden');
+  }
+}
+
+function showMessage(element, message, type) {
+  if (!element) return;
+  
+  element.textContent = message;
+  element.className = `p-4 rounded-lg ${type === 'success' 
+    ? 'bg-green-100 text-green-700' 
+    : 'bg-red-100 text-red-700'}`;
+  element.classList.remove('hidden');
+  
+  setTimeout(() => {
+    element.classList.add('hidden');
+  }, CONFIG.MESSAGE_TIMEOUT);
+}
 });
