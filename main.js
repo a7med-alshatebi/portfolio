@@ -67,23 +67,50 @@ document.addEventListener('DOMContentLoaded', function() {
       };
       
       try {
+        console.log('Sending data to:', GOOGLE_SCRIPT_URL);
+        console.log('Form data:', formData);
+        
         const response = await fetch(GOOGLE_SCRIPT_URL, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(formData),
-          mode: 'no-cors' // Required for Google Apps Script
+          body: JSON.stringify(formData)
+          // Removed 'mode: no-cors' to properly handle the response
         });
         
-        // Since mode is 'no-cors', we can't read the response
-        // We'll assume success if no error is thrown
-        showMessage('Thank you! Your message has been sent successfully.', 'success');
-        contactForm.reset();
+        console.log('Response status:', response.status);
+        console.log('Response ok:', response.ok);
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const result = await response.json();
+        console.log('Response data:', result);
+        
+        if (result.success) {
+          showMessage('Thank you! Your message has been sent successfully.', 'success');
+          contactForm.reset();
+        } else {
+          throw new Error(result.error || 'Unknown error occurred');
+        }
         
       } catch (error) {
-        console.error('Error:', error);
-        showMessage('Sorry, there was an error sending your message. Please try again.', 'error');
+        console.error('Error sending form:', error);
+        
+        // Provide more specific error messages
+        let errorMessage = 'Sorry, there was an error sending your message. ';
+        
+        if (error.message.includes('Failed to fetch') || error.message.includes('CORS')) {
+          errorMessage += 'Please make sure your Google Apps Script is deployed correctly with "Anyone" access permissions.';
+        } else if (error.message.includes('HTTP error')) {
+          errorMessage += 'Server responded with an error. Please check your Google Apps Script configuration.';
+        } else {
+          errorMessage += 'Please try again or contact me directly at ' + (CONFIG.CONTACT_EMAIL || 'your-email@example.com');
+        }
+        
+        showMessage(errorMessage, 'error');
       }
       
       // Reset button state
