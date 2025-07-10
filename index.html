@@ -8,8 +8,63 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans">
+  <!-- Mobile Sidebar Toggle Button -->
+  <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" type="button" class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 fixed top-2 left-2 z-50 bg-white shadow-lg">
+     <span class="sr-only">Open sidebar</span>
+     <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+     <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
+     </svg>
+  </button>
+
+  <!-- Sidebar -->
+  <aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+     <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+        <!-- Portfolio Title -->
+        <div class="mb-5">
+          <h2 class="text-xl font-bold text-gray-900 dark:text-white">MyPortfolio</h2>
+        </div>
+        
+        <ul class="space-y-2 font-medium">
+           <li>
+              <a href="index.html" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                 <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z"/>
+                 </svg>
+                 <span class="ms-3">About</span>
+              </a>
+           </li>
+           <li>
+              <a href="skills.html" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                 <svg class="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.96 2.96 0 0 0 .13 5H5Z"/>
+                    <path d="M6.737 11.061a2.961 2.961 0 0 1 .81-1.515l6.117-6.116A4.839 4.839 0 0 1 16 2.141V2a1.97 1.97 0 0 0-1.933-2H7v5a2 2 0 0 1-2 2H0v11a1.969 1.969 0 0 0 1.933 2h12.134A1.97 1.97 0 0 0 16 18v-3.093l-1.546 1.546c-.413.413-.94.695-1.513.81l-3.4.679a2.947 2.947 0 0 1-1.85-.227 2.96 2.96 0 0 1-1.635-3.257l.681-3.397Z"/>
+                    <path d="M8.961 16a.93.93 0 0 0 .189-.019l3.4-.679a.961.961 0 0 0 .49-.263l6.118-6.117a2.884 2.884 0 0 0-4.079-4.078l-6.117 6.117a.96.96 0 0 0-.263.491l-.679 3.4A.961.961 0 0 0 8.961 16Zm7.477-9.8a.958.958 0 0 1 .68-.281.961.961 0 0 1 .682 1.644l-.315.315-1.36-1.36.313-.318Zm-5.911 5.911 4.236-4.236 1.359 1.359-4.236 4.237-1.7.339.341-1.699Z"/>
+                 </svg>
+                 <span class="flex-1 ms-3 whitespace-nowrap">Skills</span>
+              </a>
+           </li>
+           <li>
+              <a href="projects.html" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                 <svg class="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
+                    <path d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z"/>
+                 </svg>
+                 <span class="flex-1 ms-3 whitespace-nowrap">Projects</span>
+              </a>
+           </li>
+           <li>
+              <a href="contact.html" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                 <svg class="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+                    <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z"/>
+                 </svg>
+                 <span class="flex-1 ms-3 whitespace-nowrap">Contact</span>
+              </a>
+           </li>
+        </ul>
+     </div>
+  </aside>
+
   <!-- Header/Navigation -->
-  <header class="bg-gray-900 text-white fixed w-full z-50 shadow-lg">
+  <header class="bg-gray-900 text-white fixed w-full z-30 shadow-lg">
     <div class="container mx-auto px-6 py-4">
       <nav class="flex justify-between items-center">
         <a href="index.html" class="text-2xl font-bold">MyPortfolio</a>
@@ -21,76 +76,63 @@
           <li><a href="projects.html" class="hover:text-blue-400 transition">Projects</a></li>
           <li><a href="contact.html" class="hover:text-blue-400 transition">Contact</a></li>
         </ul>
-        
-        <!-- Mobile Menu Button -->
-        <button id="mobile-menu-button" class="md:hidden focus:outline-none">
-          <i class="fas fa-bars text-xl"></i>
-        </button>
       </nav>
-      
-      <!-- Mobile Menu -->
-      <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
-        <ul class="flex flex-col space-y-3">
-          <li><a href="index.html" class="block hover:text-blue-400 transition py-2">About</a></li>
-          <li><a href="skills.html" class="block hover:text-blue-400 transition py-2">Skills</a></li>
-          <li><a href="projects.html" class="block hover:text-blue-400 transition py-2">Projects</a></li>
-          <li><a href="contact.html" class="block hover:text-blue-400 transition py-2">Contact</a></li>
-        </ul>
-      </div>
     </div>
   </header>
 
   <!-- Main Content -->
-  <main class="pt-24">
-    <!-- Hero Section -->
-    <section class="py-20">
-      <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
-        <div class="md:w-1/2 mb-10 md:mb-0">
-          <h1 class="text-4xl md:text-5xl font-bold mb-4">Hi, I'm <span class="text-blue-600">AHMED</span></h1>
-          <h2 class="text-2xl md:text-3xl text-gray-600 mb-6">Web Developer & Designer</h2>
-          <p class="text-lg mb-6">I'm a passionate developer with one year of experience creating beautiful, functional websites and applications. I specialize in front-end development but also have experience with back-end technologies.</p>
-          <p class="text-lg mb-8">When I'm not coding, you can find me [playing soccer/fifa games]. I believe in continuous learning and staying updated with the latest technologies.</p>
-          <a href="projects.html" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg inline-block transition">View My Work</a>
+  <div class="sm:ml-64">
+    <main class="pt-24">
+      <!-- Hero Section -->
+      <section class="py-20">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
+          <div class="md:w-1/2 mb-10 md:mb-0">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Hi, I'm <span class="text-blue-600">AHMED</span></h1>
+            <h2 class="text-2xl md:text-3xl text-gray-600 mb-6">Web Developer & Designer</h2>
+            <p class="text-lg mb-6">I'm a passionate developer with one year of experience creating beautiful, functional websites and applications. I specialize in front-end development but also have experience with back-end technologies.</p>
+            <p class="text-lg mb-8">When I'm not coding, you can find me playing Soccer/Fifa games. I believe in continuous learning and staying updated with the latest technologies.</p>
+            <a href="projects.html" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg inline-block transition">View My Work</a>
+          </div>
+          <div class="md:w-1/2 flex justify-center">
+            <img src="images/profile.jpg" alt="Profile Picture" class="rounded-full w-64 h-64 md:w-80 md:h-80 object-cover shadow-xl">
+          </div>
         </div>
-        <div class="md:w-1/2 flex justify-center">
-          <img src="images/profile.jpg" alt="Profile Picture" class="rounded-full w-64 h-64 md:w-80 md:h-80 object-cover shadow-xl">
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Education/Experience Section -->
-    <section class="py-16 bg-gray-100">
-      <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-bold text-center mb-12">Education & Experience</h2>
-        
-        <div class="max-w-3xl mx-auto">
-          <!-- Timeline Item -->
-          <div class="mb-10 pl-8 relative border-l-4 border-blue-500">
-            <div class="absolute -left-3 top-2 w-6 h-6 bg-blue-500 rounded-full"></div>
-            <h3 class="text-xl font-bold mb-2">Bachelor's Degree in Computer Science</h3>
-            <p class="text-gray-600 mb-2">BIL UNI | 2022 - 2026</p>
-            <p class="text-gray-700">Specialized in web development and user experience design.</p>
-          </div>
+      <!-- Education/Experience Section -->
+      <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+          <h2 class="text-3xl font-bold text-center mb-12">Education & Experience</h2>
           
-          <!-- Timeline Item -->
-          <div class="mb-10 pl-8 relative border-l-4 border-blue-500">
-            <div class="absolute -left-3 top-2 w-6 h-6 bg-blue-500 rounded-full"></div>
-            <h3 class="text-xl font-bold mb-2">Frontend Developer at T4L Company </h3>
-            <p class="text-gray-600 mb-2">2022 - Present</p>
-            <p class="text-gray-700">Developed responsive websites and web applications using modern JavaScript frameworks.</p>
-          </div>
-          
-          <!-- Timeline Item -->
-          <div class="pl-8 relative border-l-4 border-blue-500">
-            <div class="absolute -left-3 top-2 w-6 h-6 bg-blue-500 rounded-full"></div>
-            <h3 class="text-xl font-bold mb-2">Freelance Web Developer</h3>
-            <p class="text-gray-600 mb-2">2020 - 2022</p>
-            <p class="text-gray-700">Created custom websites for small businesses and startups.</p>
+          <div class="max-w-3xl mx-auto">
+            <!-- Timeline Item -->
+            <div class="mb-10 pl-8 relative border-l-4 border-blue-500">
+              <div class="absolute -left-3 top-2 w-6 h-6 bg-blue-500 rounded-full"></div>
+              <h3 class="text-xl font-bold mb-2">Bachelor's Degree in Computer Science</h3>
+              <p class="text-gray-600 mb-2">BIL UNI | 2022 - 2026</p>
+              <p class="text-gray-700">Specialized in web development and user experience design.</p>
+            </div>
+            
+            <!-- Timeline Item -->
+            <div class="mb-10 pl-8 relative border-l-4 border-blue-500">
+              <div class="absolute -left-3 top-2 w-6 h-6 bg-blue-500 rounded-full"></div>
+              <h3 class="text-xl font-bold mb-2">Frontend Developer at T4L Company </h3>
+              <p class="text-gray-600 mb-2">2022 - Present</p>
+              <p class="text-gray-700">Developed responsive websites and web applications using modern JavaScript frameworks.</p>
+            </div>
+            
+            <!-- Timeline Item -->
+            <div class="pl-8 relative border-l-4 border-blue-500">
+              <div class="absolute -left-3 top-2 w-6 h-6 bg-blue-500 rounded-full"></div>
+              <h3 class="text-xl font-bold mb-2">Freelance Web Developer</h3>
+              <p class="text-gray-600 mb-2">2020 - 2022</p>
+              <p class="text-gray-700">Created custom websites for small businesses and startups.</p>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-  </main>
+      </section>
+    </main>
+  </div>
 
   <!-- Footer -->
   <footer class="bg-gray-900 text-white py-8">
