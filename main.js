@@ -38,4 +38,70 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }
+
+  // Contact form handler for Google Sheets
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      // Replace this URL with your Google Apps Script web app URL
+      const GOOGLE_SCRIPT_URL = CONFIG.GOOGLE_SCRIPT_URL;
+      
+      const submitBtn = document.getElementById('submitBtn');
+      const submitText = document.getElementById('submitText');
+      const loadingText = document.getElementById('loadingText');
+      const formMessage = document.getElementById('formMessage');
+      
+      // Show loading state
+      submitBtn.disabled = true;
+      submitText.classList.add('hidden');
+      loadingText.classList.remove('hidden');
+      
+      // Get form data
+      const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        subject: document.getElementById('subject').value,
+        message: document.getElementById('message').value
+      };
+      
+      try {
+        const response = await fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+          mode: 'no-cors' // Required for Google Apps Script
+        });
+        
+        // Since mode is 'no-cors', we can't read the response
+        // We'll assume success if no error is thrown
+        showMessage('Thank you! Your message has been sent successfully.', 'success');
+        contactForm.reset();
+        
+      } catch (error) {
+        console.error('Error:', error);
+        showMessage('Sorry, there was an error sending your message. Please try again.', 'error');
+      }
+      
+      // Reset button state
+      submitBtn.disabled = false;
+      submitText.classList.remove('hidden');
+      loadingText.classList.add('hidden');
+    });
+  }
+
+  function showMessage(message, type) {
+    const formMessage = document.getElementById('formMessage');
+    formMessage.textContent = message;
+    formMessage.className = `p-4 rounded-lg ${type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`;
+    formMessage.classList.remove('hidden');
+    
+    // Hide message after 5 seconds
+    setTimeout(() => {
+      formMessage.classList.add('hidden');
+    }, 5000);
+  }
 });
