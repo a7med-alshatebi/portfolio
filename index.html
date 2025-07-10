@@ -7,7 +7,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
+<body class="bg-gray-50 text-gray-800 font-sans dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
   <!-- Mobile Sidebar Toggle Button -->
   <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" type="button" class="inline-flex items-center p-2 text-sm text-white rounded-lg md:hidden hover:bg-gray-900 fixed top-4 right-4 z-50 bg-gray-900 shadow-lg">
      <span class="sr-only">Open sidebar</span>
@@ -70,12 +70,24 @@
         <a href="index.html" class="text-2xl font-bold">MyPortfolio</a>
         
         <!-- Desktop Menu -->
-        <ul class="hidden md:flex space-x-8">
-          <li><a href="index.html" class="hover:text-blue-400 transition">About</a></li>
-          <li><a href="skills.html" class="hover:text-blue-400 transition">Skills</a></li>
-          <li><a href="projects.html" class="hover:text-blue-400 transition">Projects</a></li>
-          <li><a href="contact.html" class="hover:text-blue-400 transition">Contact</a></li>
-        </ul>
+        <div class="flex items-center space-x-8">
+          <ul class="hidden md:flex space-x-8">
+            <li><a href="index.html" class="hover:text-blue-400 transition">About</a></li>
+            <li><a href="skills.html" class="hover:text-blue-400 transition">Skills</a></li>
+            <li><a href="projects.html" class="hover:text-blue-400 transition">Projects</a></li>
+            <li><a href="contact.html" class="hover:text-blue-400 transition">Contact</a></li>
+          </ul>
+          
+          <!-- Dark Mode Toggle -->
+          <button id="darkModeToggle" class="p-2 rounded-lg bg-gray-700 hover:bg-gray-600 transition">
+            <svg id="sunIcon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+            </svg>
+            <svg id="moonIcon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+          </button>
+        </div>
       </nav>
     </div>
   </header>
@@ -87,9 +99,9 @@
         <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
           <div class="md:w-1/2 mb-10 md:mb-0">
             <h1 class="text-4xl md:text-5xl font-bold mb-4">Hi, I'm <span class="text-blue-600">AHMED</span></h1>
-            <h2 class="text-2xl md:text-3xl text-gray-600 mb-6">Web Developer & Designer</h2>
-            <p class="text-lg mb-6">I'm a passionate developer with one year of experience creating beautiful, functional websites and applications. I specialize in front-end development but also have experience with back-end technologies.</p>
-            <p class="text-lg mb-8">When I'm not coding, you can find me playing Soccer/Fifa games. I believe in continuous learning and staying updated with the latest technologies.</p>
+            <h2 class="text-2xl md:text-3xl text-gray-600 dark:text-gray-400 mb-6">Web Developer & Designer</h2>
+            <p class="text-lg mb-6 dark:text-gray-300">I'm a passionate developer with one year of experience creating beautiful, functional websites and applications. I specialize in front-end development but also have experience with back-end technologies.</p>
+            <p class="text-lg mb-8 dark:text-gray-300">When I'm not coding, you can find me playing Soccer/Fifa games. I believe in continuous learning and staying updated with the latest technologies.</p>
             <a href="projects.html" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg inline-block transition">View My Work</a>
           </div>
           <div class="md:w-1/2 flex justify-center">
@@ -99,7 +111,7 @@
       </section>
 
       <!-- Education/Experience Section -->
-      <section class="py-16 bg-gray-100">
+      <section class="py-16 bg-gray-100 dark:bg-gray-800">
         <div class="container mx-auto px-6">
           <h2 class="text-3xl font-bold text-center mb-12">Education & Experience</h2>
           
@@ -108,8 +120,8 @@
             <div class="mb-10 pl-8 relative border-l-4 border-blue-500">
               <div class="absolute -left-3 top-0 w-6 h-6 bg-blue-500 rounded-full"></div>
               <h3 class="text-xl font-bold mb-2">Bachelor's Degree in Computer Engineering</h3>
-              <p class="text-gray-600 mb-2">BIL UNI | 2022 - Present</p>
-              <p class="text-gray-700">Specialized in web development and user experience design and data engineering .</p>
+              <p class="text-gray-600 dark:text-gray-400 mb-2">BIL UNI | 2022 - Present</p>
+              <p class="text-gray-700 dark:text-gray-300">Specialized in web development and user experience design and data engineering .</p>
             </div>
             
           
@@ -118,8 +130,8 @@
             <div class="pl-8 relative border-l-4 border-blue-500">
               <div class="absolute -left-3 top-0 w-6 h-6 bg-blue-500 rounded-full"></div>
               <h3 class="text-xl font-bold mb-2">Freelance Web Developer</h3>
-              <p class="text-gray-600 mb-2">2024 - Present</p>
-              <p class="text-gray-700">Created custom websites for small businesses and startups.</p>
+              <p class="text-gray-600 dark:text-gray-400 mb-2">2024 - Present</p>
+              <p class="text-gray-700 dark:text-gray-300">Created custom websites for small businesses and startups.</p>
             </div>
           </div>
         </div>

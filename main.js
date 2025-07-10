@@ -1,5 +1,40 @@
 // Mobile sidebar toggle functionality (right side)
 document.addEventListener('DOMContentLoaded', function() {
+  // Dark mode functionality
+  const darkModeToggle = document.getElementById('darkModeToggle');
+  const sunIcon = document.getElementById('sunIcon');
+  const moonIcon = document.getElementById('moonIcon');
+  
+  // Check for saved theme preference or default to 'light'
+  const currentTheme = localStorage.getItem('theme') || 'light';
+  
+  if (currentTheme === 'dark') {
+    document.documentElement.classList.add('dark');
+    if (sunIcon && moonIcon) {
+      sunIcon.classList.add('hidden');
+      moonIcon.classList.remove('hidden');
+    }
+  }
+  
+  if (darkModeToggle) {
+    darkModeToggle.addEventListener('click', function() {
+      document.documentElement.classList.toggle('dark');
+      
+      // Toggle icons
+      if (sunIcon && moonIcon) {
+        sunIcon.classList.toggle('hidden');
+        moonIcon.classList.toggle('hidden');
+      }
+      
+      // Save theme preference
+      if (document.documentElement.classList.contains('dark')) {
+        localStorage.setItem('theme', 'dark');
+      } else {
+        localStorage.setItem('theme', 'light');
+      }
+    });
+  }
+
   const sidebarButton = document.querySelector('[data-drawer-toggle="default-sidebar"]');
   const sidebar = document.getElementById('default-sidebar');
   
