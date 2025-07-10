@@ -45,7 +45,12 @@ document.addEventListener('DOMContentLoaded', function() {
     contactForm.addEventListener('submit', async function(e) {
       e.preventDefault();
       
-      // Replace this URL with your Google Apps Script web app URL
+      // Check if CONFIG is loaded
+      if (typeof CONFIG === 'undefined' || !CONFIG.GOOGLE_SCRIPT_URL) {
+        showMessage('Configuration error: Please contact me directly at ahmedalshatibi22@gmail.com', 'error');
+        return;
+      }
+      
       const GOOGLE_SCRIPT_URL = CONFIG.GOOGLE_SCRIPT_URL;
       
       const submitBtn = document.getElementById('submitBtn');
@@ -75,40 +80,22 @@ document.addEventListener('DOMContentLoaded', function() {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(formData)
-          // Removed 'mode: no-cors' to properly handle the response
+          body: JSON.stringify(formData),
+          mode: 'no-cors' // Add this back for Google Apps Script
         });
         
-        console.log('Response status:', response.status);
-        console.log('Response ok:', response.ok);
-        
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        const result = await response.json();
-        console.log('Response data:', result);
-        
-        if (result.success) {
-          showMessage('Thank you! Your message has been sent successfully.', 'success');
-          contactForm.reset();
-        } else {
-          throw new Error(result.error || 'Unknown error occurred');
-        }
+        // Since we're using no-cors, we can't read the response
+        // We'll assume success if no error is thrown
+        console.log('Request sent successfully');
+        showMessage('Thank you! Your message has been sent successfully.', 'success');
+        contactForm.reset();
         
       } catch (error) {
         console.error('Error sending form:', error);
         
-        // Provide more specific error messages
+        // Provide helpful error message with fallback
         let errorMessage = 'Sorry, there was an error sending your message. ';
-        
-        if (error.message.includes('Failed to fetch') || error.message.includes('CORS')) {
-          errorMessage += 'Please make sure your Google Apps Script is deployed correctly with "Anyone" access permissions.';
-        } else if (error.message.includes('HTTP error')) {
-          errorMessage += 'Server responded with an error. Please check your Google Apps Script configuration.';
-        } else {
-          errorMessage += 'Please try again or contact me directly at ' + (CONFIG.CONTACT_EMAIL || 'your-email@example.com');
-        }
+        errorMessage += 'Please contact me directly at ' + (CONFIG.CONTACT_EMAIL || 'ahmedalshatibi22@gmail.com');
         
         showMessage(errorMessage, 'error');
       }
