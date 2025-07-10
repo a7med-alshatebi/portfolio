@@ -13,16 +13,30 @@
     <div class="container mx-auto px-6 py-4">
       <nav class="flex justify-between items-center">
         <a href="index.html" class="text-2xl font-bold">MyPortfolio</a>
+        
+        <!-- Desktop Menu -->
         <ul class="hidden md:flex space-x-8">
           <li><a href="index.html" class="hover:text-blue-400 transition">About</a></li>
           <li><a href="skills.html" class="hover:text-blue-400 transition">Skills</a></li>
           <li><a href="projects.html" class="hover:text-blue-400 transition">Projects</a></li>
           <li><a href="contact.html" class="hover:text-blue-400 transition">Contact</a></li>
         </ul>
-        <button class="md:hidden focus:outline-none">
+        
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-button" class="md:hidden focus:outline-none">
           <i class="fas fa-bars text-xl"></i>
         </button>
       </nav>
+      
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+        <ul class="flex flex-col space-y-3">
+          <li><a href="index.html" class="block hover:text-blue-400 transition py-2">About</a></li>
+          <li><a href="skills.html" class="block hover:text-blue-400 transition py-2">Skills</a></li>
+          <li><a href="projects.html" class="block hover:text-blue-400 transition py-2">Projects</a></li>
+          <li><a href="contact.html" class="block hover:text-blue-400 transition py-2">Contact</a></li>
+        </ul>
+      </div>
     </div>
   </header>
 
@@ -85,6 +99,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
