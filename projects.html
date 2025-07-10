@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Projects | My Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+  <!-- Header/Navigation -->
+  <header class="bg-gray-900 text-white fixed w-full z-50 shadow-lg">
+    <div class="container mx-auto px-6 py-4">
+      <nav class="flex justify-between items-center">
+        <a href="index.html" class="text-2xl font-bold">MyPortfolio</a>
+        <ul class="hidden md:flex space-x-8">
+          <li><a href="index.html" class="hover:text-blue-400 transition">About</a></li>
+          <li><a href="skills.html" class="hover:text-blue-400 transition">Skills</a></li>
+          <li><a href="projects.html" class="hover:text-blue-400 transition">Projects</a></li>
+          <li><a href="contact.html" class="hover:text-blue-400 transition">Contact</a></li>
+        </ul>
+        <button class="md:hidden focus:outline-none">
+          <i class="fas fa-bars text-xl"></i>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="pt-24 pb-16">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-4">My Projects</h2>
+      <p class="text-lg text-center text-gray-600 mb-12 max-w-2xl mx-auto">Here are some of my recent works. Each project represents a unique challenge and solution.</p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Project Card -->
+        <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition transform hover:-translate-y-2">
+          <div class="h-48 overflow-hidden">
+            <img src="images/project1.jpg" alt="Clothing shop webstie" class="w-full h-full object-cover">
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2 text-blue-600">Shop Platform</h3>
+            <p class="text-gray-600 mb-4">A full-featured online store with product listings, cart functionality, and secure checkout.</p>
+            
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="bg-gray-200 px-3 py-1 rounded-full text-sm">HTML</span>
+              <span class="bg-gray-200 px-3 py-1 rounded-full text-sm">CSS</span>
+              <span class="bg-gray-200 px-3 py-1 rounded-full text-sm">JS</span>
+            </div>
+            
+            <div class="flex space-x-4">
+              <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">View Code</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Project Card -->
+        <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition transform hover:-translate-y-2">
+          <div class="h-48 overflow-hidden">
+            <img src="images/project2.jpg" alt="T4L-Company" class="w-full h-full object-cover">
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2 text-blue-600">Task Management App</h3>
+            <p class="text-gray-600 mb-4">A productivity application for organizing tasks with drag-and-drop functionality and team collaboration.</p>
+            
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="bg-gray-200 px-3 py-1 rounded-full text-sm">Vue.js</span>
+              <span class="bg-gray-200 px-3 py-1 rounded-full text-sm">Tailwindcss</span>
+              <span class="bg-gray-200 px-3 py-1 rounded-full text-sm">html</span>
+            </div>
+            
+            <div class="flex space-x-4">
+              <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">View Code</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Project Card -->
+        <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition transform hover:-translate-y-2">
+          <div class="h-48 overflow-hidden">
+            <img src="images/project3.jpg" alt="Instagram API" class="w-full h-full object-cover">
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2 text-blue-600">Instagram Dashboard</h3>
+            <p class="text-gray-600 mb-4">Real-time instagram information with 5-day forecast using facebook-devlopers API.</p>
+            
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="bg-gray-200 px-3 py-1 rounded-full text-sm">JavaScript</span>
+              <span class="bg-gray-200 px-3 py-1 rounded-full text-sm">API</span>
+              <span class="bg-gray-200 px-3 py-1 rounded-full text-sm">Tailwindcss</span>
+            </div>
+            
+            <div class="flex space-x-4">
+              <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">View Code</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Project Card -->
+        <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition transform hover:-translate-y-2">
+          <div class="h-48 overflow-hidden">
+            <img src="images/project4.jpg" alt="Portfolio Website" class="w-full h-full object-cover">
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2 text-blue-600">Portfolio Website</h3>
+            <p class="text-gray-600 mb-4">A responsive portfolio website to showcase my skills and projects (this website).</p>
+            
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="bg-gray-200 px-3 py-1 rounded-full text-sm">HTML5</span>
+              <span class="bg-gray-200 px-3 py-1 rounded-full text-sm">CSS3</span>
+              <span class="bg-gray-200 px-3 py-1 rounded-full text-sm">JavaScript</span>
+            </div>
+            
+            <div class="flex space-x-4">
+              <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">View Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-8">
+    <div class="container mx-auto px-6 text-center">
+      <p>&copy; 2023 My Portfolio. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
