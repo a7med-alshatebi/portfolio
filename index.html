@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Me | My Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+  <!-- Header/Navigation -->
+  <header class="bg-gray-900 text-white fixed w-full z-50 shadow-lg">
+    <div class="container mx-auto px-6 py-4">
+      <nav class="flex justify-between items-center">
+        <a href="index.html" class="text-2xl font-bold">MyPortfolio</a>
+        <ul class="hidden md:flex space-x-8">
+          <li><a href="index.html" class="hover:text-blue-400 transition">About</a></li>
+          <li><a href="skills.html" class="hover:text-blue-400 transition">Skills</a></li>
+          <li><a href="projects.html" class="hover:text-blue-400 transition">Projects</a></li>
+          <li><a href="contact.html" class="hover:text-blue-400 transition">Contact</a></li>
+        </ul>
+        <button class="md:hidden focus:outline-none">
+          <i class="fas fa-bars text-xl"></i>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="pt-24">
+    <!-- Hero Section -->
+    <section class="py-20">
+      <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
+        <div class="md:w-1/2 mb-10 md:mb-0">
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">Hi, I'm <span class="text-blue-600">AHMED</span></h1>
+          <h2 class="text-2xl md:text-3xl text-gray-600 mb-6">Web Developer & Designer</h2>
+          <p class="text-lg mb-6">I'm a passionate developer with one year of experience creating beautiful, functional websites and applications. I specialize in front-end development but also have experience with back-end technologies.</p>
+          <p class="text-lg mb-8">When I'm not coding, you can find me [playing soccer/fifa games]. I believe in continuous learning and staying updated with the latest technologies.</p>
+          <a href="projects.html" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg inline-block transition">View My Work</a>
+        </div>
+        <div class="md:w-1/2 flex justify-center">
+          <img src="images/profile.jpg" alt="Profile Picture" class="rounded-full w-64 h-64 md:w-80 md:h-80 object-cover shadow-xl">
+        </div>
+      </div>
+    </section>
+
+    <!-- Education/Experience Section -->
+    <section class="py-16 bg-gray-100">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-12">Education & Experience</h2>
+        
+        <div class="max-w-3xl mx-auto">
+          <!-- Timeline Item -->
+          <div class="mb-10 pl-8 relative border-l-4 border-blue-500">
+            <div class="absolute -left-3 top-2 w-6 h-6 bg-blue-500 rounded-full"></div>
+            <h3 class="text-xl font-bold mb-2">Bachelor's Degree in Computer Science</h3>
+            <p class="text-gray-600 mb-2">BIL UNI | 2022 - 2026</p>
+            <p class="text-gray-700">Specialized in web development and user experience design.</p>
+          </div>
+          
+          <!-- Timeline Item -->
+          <div class="mb-10 pl-8 relative border-l-4 border-blue-500">
+            <div class="absolute -left-3 top-2 w-6 h-6 bg-blue-500 rounded-full"></div>
+            <h3 class="text-xl font-bold mb-2">Frontend Developer at T4L Company </h3>
+            <p class="text-gray-600 mb-2">2022 - Present</p>
+            <p class="text-gray-700">Developed responsive websites and web applications using modern JavaScript frameworks.</p>
+          </div>
+          
+          <!-- Timeline Item -->
+          <div class="pl-8 relative border-l-4 border-blue-500">
+            <div class="absolute -left-3 top-2 w-6 h-6 bg-blue-500 rounded-full"></div>
+            <h3 class="text-xl font-bold mb-2">Freelance Web Developer</h3>
+            <p class="text-gray-600 mb-2">2020 - 2022</p>
+            <p class="text-gray-700">Created custom websites for small businesses and startups.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-8">
+    <div class="container mx-auto px-6 text-center">
+      <p>&copy; 2023 My Portfolio. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
