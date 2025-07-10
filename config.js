@@ -3,7 +3,7 @@
 
 const CONFIG = {
   // Your Google Apps Script web app URL (get this from Step 2 above)
-  GOOGLE_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbxskJMWuooZWAAoeef92-0lmXOcOOwgKNItxFUSLxkR3GB9Y5T1IE4EeLiPevQRON1Q9A/exec',
+  GOOGLE_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbwAm3L2PF2YLdiyWQiakdwalhRp48XYxMd1LZfqtdtMda34GR72IYVWZ8WornnxV-Om/exec',
   
   // You can add other configuration options here in the future
   CONTACT_EMAIL: 'ahmedalshatibi22@gmail.com'
