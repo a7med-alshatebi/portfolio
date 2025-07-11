@@ -1,5 +1,64 @@
 // Mobile sidebar toggle functionality (right side)
 document.addEventListener('DOMContentLoaded', function() {
+  // Dark mode functionality
+  function initDarkMode() {
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const darkModeToggleDesktop = document.getElementById('darkModeToggleDesktop');
+    const sunIcon = document.getElementById('sunIcon');
+    const moonIcon = document.getElementById('moonIcon');
+    const sunIconDesktop = document.getElementById('sunIconDesktop');
+    const moonIconDesktop = document.getElementById('moonIconDesktop');
+    
+    // Check for saved theme preference or default to 'light'
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    
+    if (currentTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+      if (sunIcon && moonIcon) {
+        sunIcon.classList.add('hidden');
+        moonIcon.classList.remove('hidden');
+      }
+      if (sunIconDesktop && moonIconDesktop) {
+        sunIconDesktop.classList.add('hidden');
+        moonIconDesktop.classList.remove('hidden');
+      }
+    }
+    
+    function toggleDarkMode() {
+      document.documentElement.classList.toggle('dark');
+      
+      // Toggle mobile icons
+      if (sunIcon && moonIcon) {
+        sunIcon.classList.toggle('hidden');
+        moonIcon.classList.toggle('hidden');
+      }
+      
+      // Toggle desktop icons
+      if (sunIconDesktop && moonIconDesktop) {
+        sunIconDesktop.classList.toggle('hidden');
+        moonIconDesktop.classList.toggle('hidden');
+      }
+      
+      // Save theme preference
+      if (document.documentElement.classList.contains('dark')) {
+        localStorage.setItem('theme', 'dark');
+      } else {
+        localStorage.setItem('theme', 'light');
+      }
+    }
+    
+    // Add event listeners for both mobile and desktop toggles
+    if (darkModeToggle) {
+      darkModeToggle.addEventListener('click', toggleDarkMode);
+    }
+    if (darkModeToggleDesktop) {
+      darkModeToggleDesktop.addEventListener('click', toggleDarkMode);
+    }
+  }
+  
+  // Initialize dark mode
+  initDarkMode();
+
   const sidebarButton = document.querySelector('[data-drawer-toggle="default-sidebar"]');
   const sidebar = document.getElementById('default-sidebar');
   

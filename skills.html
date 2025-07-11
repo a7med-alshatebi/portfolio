@@ -1,19 +1,35 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Skills | My Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class'
+    }
+  </script>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
+<body class="bg-gray-50 text-gray-800 font-sans dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
   <!-- Mobile Sidebar Toggle Button -->
   <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" type="button" class="inline-flex items-center p-2 text-sm text-white rounded-lg md:hidden hover:bg-gray-900  fixed top-4 right-4 z-50 bg-gray-900 shadow-lg">
      <span class="sr-only">Open sidebar</span>
      <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
      <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
+     </svg>
+  </button>
+
+  <!-- Dark Mode Toggle Button -->
+  <button id="darkModeToggle" class="inline-flex items-center p-2 text-sm text-white rounded-lg md:hidden hover:bg-gray-900 fixed top-4 right-16 z-50 bg-gray-900 shadow-lg">
+     <span class="sr-only">Toggle dark mode</span>
+     <svg id="sunIcon" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+       <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+     </svg>
+     <svg id="moonIcon" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 20 20">
+       <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
      </svg>
   </button>
 
@@ -65,18 +81,42 @@
   </aside>
 
   <!-- Header/Navigation -->
-  <header class="bg-gray-900 text-white fixed w-full z-30 shadow-lg">
+  <header class="bg-gray-900 text-white dark:bg-gray-800 fixed w-full z-30 shadow-lg dark:shadow-gray-900/50">
     <div class="container mx-auto px-6 py-4">
       <nav class="flex justify-between items-center">
-        <a href="index.html" class="text-2xl font-bold">MyPortfolio</a>
+        <a href="index.html" class="text-2xl font-bold text-white dark:text-gray-100">MyPortfolio</a>
         
-        <!-- Desktop Menu -->
-        <ul class="hidden md:flex space-x-8">
-          <li><a href="index.html" class="hover:text-blue-400 transition">About</a></li>
-          <li><a href="skills.html" class="hover:text-blue-400 transition">Skills</a></li>
-          <li><a href="projects.html" class="hover:text-blue-400 transition">Projects</a></li>
-          <li><a href="contact.html" class="hover:text-blue-400 transition">Contact</a></li>
-        </ul>
+        <!-- Desktop Menu with Dark Mode Toggle -->
+        <div class="flex items-center space-x-6">
+          <ul class="hidden md:flex space-x-8">
+            <li><a href="index.html" class="hover:text-blue-400 dark:hover:text-blue-300 transition text-white dark:text-gray-100">About</a></li>
+            <li><a href="skills.html" class="hover:text-blue-400 dark:hover:text-blue-300 transition text-white dark:text-gray-100">Skills</a></li>
+            <li><a href="projects.html" class="hover:text-blue-400 dark:hover:text-blue-300 transition text-white dark:text-gray-100">Projects</a></li>
+            <li><a href="contact.html" class="hover:text-blue-400 dark:hover:text-blue-300 transition text-white dark:text-gray-100">Contact</a></li>
+          </ul>
+          
+          <!-- Desktop Dark Mode Toggle -->
+          <button id="darkModeToggleDesktop" class="hidden md:inline-flex items-center p-2 text-sm text-white dark:text-gray-100 rounded-lg hover:bg-gray-700 dark:hover:bg-gray-600 transition">
+             <span class="sr-only">Toggle dark mode</span>
+             <svg id="sunIconDesktop" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+               <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+             </svg>
+             <svg id="moonIconDesktop" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20">
+               <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+             </svg>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+             <svg id="sunIconDesktop" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+               <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+             </svg>
+             <svg id="moonIconDesktop" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20">
+               <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+             </svg>
+          </button>
+        </div>
       </nav>
     </div>
   </header>
@@ -84,131 +124,131 @@
   <!-- Main Content -->
   <main class="pt-24 pb-16">
     <div class="container mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center mb-4">My Skills</h2>
-      <p class="text-lg text-center text-gray-600 mb-12 max-w-2xl mx-auto">Here are the technologies and tools I work with on a regular basis.</p>
+      <h2 class="text-3xl font-bold text-center mb-4 text-gray-800 dark:text-gray-100">My Skills</h2>
+      <p class="text-lg text-center text-gray-600 dark:text-gray-300 mb-12 max-w-2xl mx-auto">Here are the technologies and tools I work with on a regular basis.</p>
       
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Skill Category -->
-        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-blue-950 transition">
-          <h3 class="text-xl font-bold mb-4 text-blue-600">Frontend Development</h3>
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg dark:shadow-gray-900/50 hover:shadow-blue-950 dark:hover:shadow-blue-900/30 transition">
+          <h3 class="text-xl font-bold mb-4 text-blue-600 dark:text-blue-400">Frontend Development</h3>
           
           <!-- Skill Item -->
           <div class="mb-4">
-            <div class="flex justify-between mb-1">
+            <div class="flex justify-between mb-1 text-gray-800 dark:text-gray-200">
               <span>HTML5</span>
               <span>95%</span>
             </div>
-            <div class="w-full bg-gray-200 rounded-full h-2.5">
-              <div class="bg-blue-600 h-2.5 rounded-full" style="width: 95%"></div>
+            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+              <div class="bg-blue-600 dark:bg-blue-500 h-2.5 rounded-full" style="width: 95%"></div>
             </div>
           </div>
           
           <!-- Skill Item -->
           <div class="mb-4">
-            <div class="flex justify-between mb-1">
+            <div class="flex justify-between mb-1 text-gray-800 dark:text-gray-200">
               <span>CSS3</span>
               <span>90%</span>
             </div>
-            <div class="w-full bg-gray-200 rounded-full h-2.5">
-              <div class="bg-blue-600 h-2.5 rounded-full" style="width: 90%"></div>
+            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+              <div class="bg-blue-600 dark:bg-blue-500 h-2.5 rounded-full" style="width: 90%"></div>
             </div>
           </div>
           
           <!-- Skill Item -->
           <div class="mb-4">
-            <div class="flex justify-between mb-1">
+            <div class="flex justify-between mb-1 text-gray-800 dark:text-gray-200">
               <span>JavaScript</span>
               <span>85%</span>
             </div>
-            <div class="w-full bg-gray-200 rounded-full h-2.5">
-              <div class="bg-blue-600 h-2.5 rounded-full" style="width: 85%"></div>
+            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+              <div class="bg-blue-600 dark:bg-blue-500 h-2.5 rounded-full" style="width: 85%"></div>
             </div>
           </div>
           
           <!-- Skill Item -->
           <div class="mb-4">
-            <div class="flex justify-between mb-1">
+            <div class="flex justify-between mb-1 text-gray-800 dark:text-gray-200">
               <span>React</span>
               <span>80%</span>
             </div>
-            <div class="w-full bg-gray-200 rounded-full h-2.5">
-              <div class="bg-blue-600  h-2.5 rounded-full" style="width: 80%"></div>
+            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+              <div class="bg-blue-600 dark:bg-blue-500 h-2.5 rounded-full" style="width: 80%"></div>
             </div>
           </div>
         </div>
         
         <!-- Skill Category -->
-        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-blue-950 transition">
-          <h3 class="text-xl font-bold mb-4 text-blue-600">Backend Development</h3>
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg dark:shadow-gray-900/50 hover:shadow-blue-950 dark:hover:shadow-blue-900/30 transition">
+          <h3 class="text-xl font-bold mb-4 text-blue-600 dark:text-blue-400">Backend Development</h3>
           
           <!-- Skill Item -->
           <div class="mb-4">
-            <div class="flex justify-between mb-1">
+            <div class="flex justify-between mb-1 text-gray-800 dark:text-gray-200">
               <span>Node.js</span>
               <span>75%</span>
             </div>
-            <div class="w-full bg-gray-200 rounded-full h-2.5">
-              <div class="bg-blue-600 h-2.5 rounded-full" style="width: 75%"></div>
+            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+              <div class="bg-blue-600 dark:bg-blue-500 h-2.5 rounded-full" style="width: 75%"></div>
             </div>
           </div>
           
           <!-- Skill Item -->
           <div class="mb-4">
-            <div class="flex justify-between mb-1">
+            <div class="flex justify-between mb-1 text-gray-800 dark:text-gray-200">
               <span>Express</span>
               <span>70%</span>
             </div>
-            <div class="w-full bg-gray-200 rounded-full h-2.5">
-              <div class="bg-blue-600 h-2.5 rounded-full" style="width: 70%"></div>
+            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+              <div class="bg-blue-600 dark:bg-blue-500 h-2.5 rounded-full" style="width: 70%"></div>
             </div>
           </div>
           
           <!-- Skill Item -->
           <div class="mb-4">
-            <div class="flex justify-between mb-1">
+            <div class="flex justify-between mb-1 text-gray-800 dark:text-gray-200">
               <span>MongoDB</span>
               <span>65%</span>
             </div>
-            <div class="w-full bg-gray-200 rounded-full h-2.5">
-              <div class="bg-blue-600 h-2.5 rounded-full" style="width: 65%"></div>
+            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+              <div class="bg-blue-600 dark:bg-blue-500 h-2.5 rounded-full" style="width: 65%"></div>
             </div>
           </div>
         </div>
         
         <!-- Skill Category -->
-        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-blue-950 transition">
-          <h3 class="text-xl font-bold mb-4 text-blue-600">Other Skills</h3>
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg dark:shadow-gray-900/50 hover:shadow-blue-950 dark:hover:shadow-blue-900/30 transition">
+          <h3 class="text-xl font-bold mb-4 text-blue-600 dark:text-blue-400">Other Skills</h3>
           
           <!-- Skill Item -->
           <div class="mb-4">
-            <div class="flex justify-between mb-1">
+            <div class="flex justify-between mb-1 text-gray-800 dark:text-gray-200">
               <span>UI/UX Design</span>
               <span>75%</span>
             </div>
-            <div class="w-full bg-gray-200 rounded-full h-2.5">
-              <div class="bg-blue-600 h-2.5 rounded-full" style="width: 75%"></div>
+            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+              <div class="bg-blue-600 dark:bg-blue-500 h-2.5 rounded-full" style="width: 75%"></div>
             </div>
           </div>
           
           <!-- Skill Item -->
           <div class="mb-4">
-            <div class="flex justify-between mb-1">
+            <div class="flex justify-between mb-1 text-gray-800 dark:text-gray-200">
               <span>Git</span>
               <span>80%</span>
             </div>
-            <div class="w-full bg-gray-200 rounded-full h-2.5">
-              <div class="bg-blue-600 h-2.5 rounded-full" style="width: 80%"></div>
+            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+              <div class="bg-blue-600 dark:bg-blue-500 h-2.5 rounded-full" style="width: 80%"></div>
             </div>
           </div>
           
           <!-- Skill Item -->
           <div class="mb-4">
-            <div class="flex justify-between mb-1">
+            <div class="flex justify-between mb-1 text-gray-800 dark:text-gray-200">
               <span>Photoshop</span>
               <span>60%</span>
             </div>
-            <div class="w-full bg-gray-200 rounded-full h-2.5">
-              <div class="bg-blue-600 h-2.5 rounded-full" style="width: 60%"></div>
+            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+              <div class="bg-blue-600 dark:bg-blue-500 h-2.5 rounded-full" style="width: 60%"></div>
             </div>
           </div>
         </div>
@@ -216,7 +256,7 @@
     </main>
 
   <!-- Footer -->
-  <footer class="bg-gray-900 text-white py-8">
+  <footer class="bg-gray-900 dark:bg-gray-800 text-white dark:text-gray-100 py-8">
     <div class="container mx-auto px-6 text-center">
       <p>&copy; 2025 a7med-alshatebi. All rights reserved.</p>
     </div>
