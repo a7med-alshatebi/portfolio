@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Initialize dark mode
   initDarkMode();
-
+  
   const sidebarButton = document.querySelector('[data-drawer-toggle="default-sidebar"]');
   const sidebar = document.getElementById('default-sidebar');
   
